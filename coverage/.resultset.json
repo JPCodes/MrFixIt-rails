@@ -41,6 +41,11 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         null,
@@ -62,6 +67,7 @@
         null,
         1,
         null,
+        1,
         1,
         null,
         1,
@@ -768,6 +774,23 @@
         null,
         null
       ],
+      "/Users/Guest/Desktop/MrFixIt-rails/spec/support/factory_girl.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/Guest/Desktop/MrFixIt-rails/spec/support/shared_db_connection.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        61,
+        null,
+        null,
+        null,
+        1
+      ],
       "/Users/Guest/Desktop/MrFixIt-rails/spec/models/user_spec.rb": [
         1,
         null,
@@ -783,6 +806,6 @@
         null
       ]
     },
-    "timestamp": 1487974846
+    "timestamp": 1487975603
   }
 }
