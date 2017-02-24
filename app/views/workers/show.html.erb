@@ -4,7 +4,7 @@
 <% @jobs.each do |job| %>
   <% if !job.active_job? %>
   <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
-    <% if @worker.id == current_worker.id %>
+    <% if current_worker && @worker.id == current_worker.id %>
      | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job), remote: true  %>
     <% end %>
     </li>
@@ -17,7 +17,7 @@
 <% @jobs.each do |job| %>
   <% if job.active_job? %>
   <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
-    <% if @worker.id == current_worker.id %>
+    <% if current_worker && @worker.id == current_worker.id %>
      | <%= link_to 'Make this job inactive', worker_activate_job_path(@worker, job), remote: true  %>
     <% end %>
     </li>
