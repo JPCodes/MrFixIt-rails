@@ -2,8 +2,21 @@
 
 <% if @jobs.any? %>
 <ul>
+
+  <h2>Available Jobs</h2>
+
   <% @jobs.each do |job| %>
+    <% if !job.pending? %>
   <li><%= link_to job.title, job_path(job) %></li>
+    <% end %>
+  <% end %>
+
+  <h2>Claimed Jobs:</h2>
+
+  <% @jobs.each do |job| %>
+    <% if job.pending? %>
+  <li><%= link_to job.title, job_path(job) %></li>
+    <% end %>
   <% end %>
 </ul>
 <% else %>
