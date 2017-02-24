@@ -11,4 +11,13 @@ describe 'Create a Job process' do
     click_on 'Create Job'
     expect(page).to have_content('Lawn Mowing needed!')
   end
+
+  it 'will fail to add a Job', js: true do
+    user = FactoryGirl.create(:user)
+    login_as(user)
+    visit root_path
+    click_link 'Add Your Job'
+    click_on 'Create Job'
+    expect(page).to have_content('errors')
+  end
 end
