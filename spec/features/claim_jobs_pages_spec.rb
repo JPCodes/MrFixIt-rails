@@ -23,4 +23,11 @@ describe 'Create a Job process' do
     expect(page).to have_content('Someone has already claimed this job.')
   end
 
+  it 'will disallow claiming a Job as a user', js: true do
+    logout(@worker)
+    login_as(@user)
+    visit job_path(@job_unclaimed)
+    click_link 'click here to claim it now'
+    expect(page).to have_content('You must have a worker account to claim a job. Register for one using the link in the navbar above.')
+  end
 end
