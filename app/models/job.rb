@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-  validates :title, :presence => true
+  validates :title, :description, :presence => true
 
   def toggle_job
     self.active_job = !self.active_job
