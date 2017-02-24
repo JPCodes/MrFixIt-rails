@@ -22,8 +22,17 @@ class WorkersController < ApplicationController
   def worker_activate_job
     @worker = Worker.find(params[:worker_id])
     @job = Job.find(params[:job_id])
-    @job.active_job = !@job.active_job
-    @job.save
+    @job.toggle_job
+    respond_to do |format|
+      format.html { redirect_to worker_path(current_worker)}
+      format.js
+    end
+  end
+
+  def worker_complete_job
+    @worker = Worker.find(params[:worker_id])
+    @job = Job.find(params[:job_id])
+    @job.complete_job
     respond_to do |format|
       format.html { redirect_to worker_path(current_worker)}
       format.js

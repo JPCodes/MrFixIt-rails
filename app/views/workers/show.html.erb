@@ -1,11 +1,16 @@
 <h1><%= @worker.email %>'s claimed jobs:</h1>
+<% if current_worker && @worker.id == current_worker.id %>
+  <h4>Welcome to your Dashboard!</h4>
+<% else %>
+  <h4>Log in to Manage Jobs' Active State</h4>
+<% end %>
 
 <ul id="inactive-jobs">
 <% @jobs.each do |job| %>
-  <% if !job.active_job? %>
+  <% if !job.active_job? && !job.completed? %>
   <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
     <% if current_worker && @worker.id == current_worker.id %>
-     | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job), remote: true  %>
+     | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job), remote: true  %> | <%= link_to 'Mark this job as completed', worker_complete_job_path(@worker, job), remote: true %>
     <% end %>
     </li>
   <% end %>
@@ -15,12 +20,21 @@
 <h1>Active Jobs:</h1>
 <ul id="active-jobs">
 <% @jobs.each do |job| %>
-  <% if job.active_job? %>
+  <% if job.active_job? && !job.completed? %>
   <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
     <% if current_worker && @worker.id == current_worker.id %>
-     | <%= link_to 'Make this job inactive', worker_activate_job_path(@worker, job), remote: true  %>
+     | <%= link_to 'Make this job inactive', worker_activate_job_path(@worker, job), remote: true  %> | <%= link_to 'Mark this job as completed', worker_complete_job_path(@worker, job), remote: true %>
     <% end %>
     </li>
+  <% end %>
+<% end %>
+</ul>
+
+<h1>Completed Jobs:</h1>
+<ul id="completed-jobs">
+<% @jobs.each do |job| %>
+  <% if job.completed? %>
+  <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %></li>
   <% end %>
 <% end %>
 </ul>

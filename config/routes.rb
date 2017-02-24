@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :jobs
   resources :workers do
-    get 'activate/:job_id', to: 'workers#worker_activate_job', as: 'activate_job'
+    get 'activate/job/:job_id', to: 'workers#worker_activate_job', as: 'activate_job'
+    get 'complete/job/:job_id', to: 'workers#worker_complete_job', as: 'complete_job'
   end
 end
