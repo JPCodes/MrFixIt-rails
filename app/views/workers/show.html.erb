@@ -10,11 +10,11 @@
 </ul>
 
 <div id="active-jobs">
-<h1>Active Jobs</h1>
+<h1>Active Jobs:</h1>
 <ul>
 <% @jobs.each do |job| %>
   <% if job.active_job? %>
-    <%= job.title %>
+    <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %></li>
   <% end %>
 <% end %>
 </ul>
