@@ -14,7 +14,7 @@
   <h2>Claimed Jobs:</h2>
 
   <% @jobs.each do |job| %>
-    <% if job.pending? %>
+    <% if job.pending? || job.completed? %>
   <li><%= link_to job.title, job_path(job) %></li>
     <% end %>
   <% end %>

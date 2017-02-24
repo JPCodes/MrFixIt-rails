@@ -4,11 +4,21 @@
 
 <% if !@job.completed? %>
 <div id="before-claim">
-  <% if @job.pending && @job.worker_id != current_worker.id %>
-    <p>Someone has already claimed this job; it's currently pending.</p>
-  <% elsif @job.worker_id == current_worker.id %>
-    <p>This job has been claimed by you.</p>
-  <% else %>
+  <% if current_worker %>
+    <% if @job.pending && @job.worker_id != current_worker.id %>
+      <p>Someone has already claimed this job.</p>
+    <% elsif @job.worker_id == current_worker.id %>
+      <p>This job has been claimed by you.</p>
+    <% end %>
+  <% end %>
+
+  <% if current_user %>
+    <% if @job.pending? %>
+      <p>Someone has already claimed this job.</p>
+    <% end %>
+  <% end %>
+
+  <% if !@job.pending? %>
   <p>No one has claimed this job!</p>
   <%= link_to "click here to claim it now", job_path(@job), :method => "patch", remote: true %>
   <% end %>
