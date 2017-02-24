@@ -4,8 +4,13 @@ FactoryGirl.define do
     password '123456'
   end
 
+  factory :worker do
+    sequence(:email){|n| "worker#{n}@factory.com" }
+    password '123456'
+  end
+
   factory :job do
-    title '1 Acre lawn needs mowing'
+    sequence(:title){|n| "#{n} Acre lawn needs mowing" }
     description 'Have 1 acre lawn that needs mowing asap, extra $$$ if weeds are pulled'
     completed false
     pending false
