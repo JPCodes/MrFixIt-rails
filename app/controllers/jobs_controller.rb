@@ -30,7 +30,6 @@ class JobsController < ApplicationController
           format.html { redirect_to job_path(@job)}
           format.js
         end
-        # redirect_to worker_path(current_worker)
         flash[:notice] = "You've successfully claimed this job."
       else
         render :show
