@@ -20,6 +20,7 @@ class WorkersController < ApplicationController
   end
 
   def worker_activate_job
+    @worker = Worker.find(params[:worker_id])
     @job = Job.find(params[:job_id])
     puts 'controller false: ', @job.active_job?
     puts 'controller true: ', !@job.active_job
