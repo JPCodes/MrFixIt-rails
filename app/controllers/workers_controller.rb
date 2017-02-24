@@ -20,7 +20,9 @@ class WorkersController < ApplicationController
   end
 
   def worker_activate_job
-    puts 'success!'
+    @job = Job.find(params[:job_id])
+    @job.active_job = true
+    @job.save
     respond_to do |format|
       format.html { redirect_to worker_path(current_worker)}
       format.js

@@ -4,12 +4,12 @@
 <% @jobs.each do |job| %>
   <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
     <% if @worker.id == current_worker.id %>
-     | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job)  %></li>
+     | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job), remote: true  %></li>
     <% end %>
 <% end %>
 </ul>
 
-<div class="active-jobs">
+<div id="active-jobs">
 <h1>Active Jobs</h1>
 <ul>
 <% @jobs.each do |job| %>
