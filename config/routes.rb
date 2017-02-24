@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   resources :jobs
-  resources :workers
+  resources :workers do
+    get 'activate/:job_id', to: 'workers#worker_activate_job', as: 'activate_job'
+  end
 end

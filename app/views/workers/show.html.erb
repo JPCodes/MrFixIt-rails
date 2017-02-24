@@ -1,7 +1,21 @@
-<h1><%= current_worker.email %>'s claimed jobs:</h1>
+<h1><%= @worker.email %>'s claimed jobs:</h1>
 
 <ul>
-<% current_worker.jobs.each do |job| %>
-<li><%= link_to job.title, job_path(job) %></li>
+<% @jobs.each do |job| %>
+  <li id="job_<%= job.id %>"><%= link_to job.title, job_path(job) %>
+    <% if @worker.id == current_worker.id %>
+     | <%= link_to 'Make this job active', worker_activate_job_path(@worker, job)  %></li>
+    <% end %>
 <% end %>
 </ul>
+
+<div class="active-jobs">
+<h1>Active Jobs</h1>
+<ul>
+<% @jobs.each do |job| %>
+  <% if job.active_job? %>
+    <%= job.title %>
+  <% end %>
+<% end %>
+</ul>
+</div>

@@ -1,6 +1,7 @@
 class WorkersController < ApplicationController
   def show
-    @worker = current_worker
+    @worker = Worker.find(params[:id])
+    @jobs = @worker.jobs
     render :show
   end
 
@@ -15,6 +16,14 @@ class WorkersController < ApplicationController
     redirect_to new_worker_registration_path
     else
       redirect_to new_worker_registration_path
+    end
+  end
+
+  def worker_activate_job
+    puts 'success!'
+    respond_to do |format|
+      format.html { redirect_to worker_path(current_worker)}
+      format.js
     end
   end
 
