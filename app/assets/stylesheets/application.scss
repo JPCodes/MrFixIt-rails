@@ -13,16 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body {
   margin: 0;
   padding: 0;
   margin-top: -10px;
 }
-
- .content {
-   margin: 40px;
- }
 
  .navigation-menu ul {
    list-style: none;
@@ -55,10 +53,11 @@ body {
   padding: 15px;
 }
 
-.image {
-  align-content: center;
-}
-
 .page-title {
   color: #f7b50c;
+}
+
+.nice-img {
+  border: 4px solid gray;
+  border-radius: 5px;
 }

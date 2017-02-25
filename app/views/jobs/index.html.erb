@@ -1,13 +1,13 @@
 <h1>Jobs</h1>
 
 <% if @jobs.any? %>
-<ul>
+<ul class="list-group">
 
   <h2>Available Jobs</h2>
 
   <% @jobs.each do |job| %>
     <% if !job.pending? %>
-  <li><%= link_to job.title, job_path(job) %></li>
+  <li class="list-group-item"><%= link_to job.title, job_path(job) %></li>
     <% end %>
   <% end %>
 
@@ -15,7 +15,7 @@
 
   <% @jobs.each do |job| %>
     <% if job.pending? || job.completed? %>
-  <li><%= link_to job.title, job_path(job) %></li>
+  <li class="list-group-item"><%= link_to job.title, job_path(job) %></li>
     <% end %>
   <% end %>
 </ul>
