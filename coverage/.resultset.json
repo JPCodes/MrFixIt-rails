@@ -859,11 +859,6 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/Guest/Desktop/MrFixIt-rails/spec/models/job_spec.rb": [
@@ -913,6 +908,6 @@
         null
       ]
     },
-    "timestamp": 1487983361
+    "timestamp": 1487983563
   }
 }
