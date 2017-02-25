@@ -13,4 +13,10 @@ describe 'Manage a Job process' do
     click_link 'Mark this job as completed'
     expect(page).to_not have_content('Make this job inactive')
   end
+
+  it 'will mark a job as active', js: true do
+    visit worker_path(@worker)
+    click_link 'Make this job active'
+    expect(page).to have_content('Make this job inactive')
+  end
 end

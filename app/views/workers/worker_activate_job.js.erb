@@ -1,19 +1,7 @@
 $('#job_<%= @job.id %>').remove();
 
 <% if @job.active_job? %>
-$('#active-jobs').append(`
-  <li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %>
-  <% if @worker.id == current_worker.id %>
-   | <%= link_to 'Make this job inactive', worker_activate_job_path(@worker, @job), remote: true  %>
-  <% end %>
-  </li>
-  `);
+$('#active-jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %><% if @worker.id == current_worker.id %>  | <%= link_to "Make this job inactive", worker_activate_job_path(@worker, @job), remote: true  %><% end %></li>');
 <% else %>
-$('#inactive-jobs').append(`
-  <li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %>
-  <% if @worker.id == current_worker.id %>
-   | <%= link_to 'Make this job active', worker_activate_job_path(@worker, @job), remote: true  %>
-  <% end %>
-  </li>
-  `);
+$('#inactive-jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %><% if @worker.id == current_worker.id %>  | <%= link_to "Make this job active", worker_activate_job_path(@worker, @job), remote: true  %><% end %></li>');
 <% end %>
